@@ -1,15 +1,16 @@
 import { connect } from "react-redux";
 import TodoApp from "../components/TodoApp";
-import { inputTask, addTask } from "../actions/tasks";
+import { inputTask, addTask, deleteTask, resetSetInProp } from "../actions/tasks";
 
 // Containers Components
 // reduxとreactコンポーネントの橋渡し
 
 // stateの情報をpropsに渡す
-function mapStateToProps({ task, tasks }){
+function mapStateToProps({ task, tasks, setInProp}){
     return {
         task,
-        tasks
+        tasks,
+        setInProp
     };
 }
 
@@ -25,6 +26,16 @@ function mapDispatchToProps(dispatch){
         inputTask(task){
             // actionsの関数を実施
             dispatch(inputTask(task));
+        },
+        //この名前でPropsとして渡す
+        deleteTask(){
+            // actionsの関数を実施
+            dispatch(deleteTask());
+        },
+        //この名前でPropsとして渡す
+        resetSetInProp(){
+            // actionsの関数を実施
+            dispatch(resetSetInProp());
         }
     };
 }
